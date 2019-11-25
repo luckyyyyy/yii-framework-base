@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+/**
+ * This file is part of the yii-framework-base.
+ * @author William Chan <root@williamchan.me>
+ */
+
+// 命令行入口
+defined('YII_DEBUG') or define('YII_DEBUG', true);
+defined('YII_ENV') or define('YII_ENV', 'dev');
+
+$configFile = __DIR__ . '/config/console.php';
+$config = require(__DIR__ . '/config/_bootstrap.php');
+// unset catchAll
+unset($config['catchAll']);
+$app = new \yii\console\Application($config);
+$app->controllerMap['migrate'] = [
+    'class' => 'yii\console\controllers\MigrateController',
+    'migrationTable' => 'migration',
+];
+exit($app->run());

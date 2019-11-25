@@ -1,0 +1,28 @@
+# ide files
+.idea
+.buildpath
+.project
+.settings
+nbproject
+dump.rdb
+
+# system cache files
+.DS_Store
+Thumbs.db
+
+# yii2
+composer.lock
+/vendor
+/config/custom.php
+/config/assets-prod.php
+/config/libshmcache.conf
+/runtime
+/web/assets
+
+# logs
+/logs
+
+# vue resources
+/web/m
+.metadata/
+/static/zips/

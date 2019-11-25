@@ -1,0 +1,58 @@
+{
+    "name": "muggle",
+    "description": "muggle base",
+    "keywords": ["muggle"],
+    "homepage": "http://muggle.com/",
+    "type": "project",
+    "license": "Commercial",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "^2.0.13.0",
+        "yiisoft/yii2-redis": "2.0.7",
+        "hightman/xunsearch": "*",
+        "hightman/httpclient": "dev-master",
+        "zircote/swagger-php": "^2.0",
+        "bower-asset/swagger-ui": "2.2.10",
+        "endroid/qr-code": "^3.2",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "github-oauth": {
+
+        },
+        "fxp-asset": {
+            "installer-paths": {
+                "npm-asset-library": "vendor/npm",
+                "bower-asset-library": "vendor/bower"
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\components\\": "components"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postCreateProject",
+            "app\\components\\Installer::postInstall"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "static/uploads": "0777",
+                    "yii": "0755"
+                }
+            ]
+        }
+    }
+}
