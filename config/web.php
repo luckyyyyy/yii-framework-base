@@ -64,7 +64,9 @@ $config = [
             'modules' => [
                 'admin' => [
                     'class' => 'app\modules\admin\api\Module',
-                    'modules' => [],
+                    'modules' => [
+                        'wechat' => 'app\modules\admin\wechat\api\Module',
+                    ],
                 ],
                 'user' => 'app\modules\user\api\Module',
             ],
