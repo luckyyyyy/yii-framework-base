@@ -132,9 +132,9 @@ class TokensController extends \app\modules\api\controllers\Controller
     /**
      * 微信授权登陆 (Cookie based)
      *
-     * @param $scenario
-     * @param null $redirect_uri
-     * @param null $code
+     * @param string $scenario
+     * @param string|null $redirect_uri
+     * @param string|null $code
      * @return Response
      * @throws BadRequestHttpException
      * @throws NotAcceptableHttpException
@@ -177,14 +177,14 @@ class TokensController extends \app\modules\api\controllers\Controller
                     if (!$unionid) {
                         throw new \Exception('unionid is null');
                     }
-                    $user->loginByWechat($openid, $unionid, null, $scenario);
+                    $user->loginByWechat($openid, $unionid, null);
                 } catch (\Exception $e) {
                     $states = $wechat->snsApi('userinfo', [
                         'access_token' => $token['access_token'],
                         'openid' => $openid,
                         'lang' => 'zh_CN',
                     ]);
-                    $user->loginByWechat($openid, $unionid, $states, $scenario);
+                    $user->loginByWechat($openid, $unionid, $states);
                 }
                 $this->loginLog('wechat', $states);
                 return $this->redirect($user->returnUrl);
@@ -341,7 +341,6 @@ class TokensController extends \app\modules\api\controllers\Controller
      *             @SWG\Property(property="phone", type="string", description="手机号码", example="1300000000"),
      *             @SWG\Property(property="code", type="string", description="验证码", example="123456"),
      *             @SWG\Property(property="password", type="string", description="密码", example="password"),
-     *             @SWG\Property(property="scenario", type="string", description="场景", example="console"),
      *         )
      *     ),
      *     @SWG\Response(response=200, description="success",
@@ -373,13 +372,9 @@ class TokensController extends \app\modules\api\controllers\Controller
             throw new BadRequestHttpException('提交数据有误');
         }
 
-        // 场景 在中台登陆时使用
-        $scenario = isset($params['scenario']) ? $params['scenario'] : null;
-
         $states = [
             'phone' => $phone,
             'code' => $code,
-            'scenario' => $scenario,
             'mode' => 'session',
         ];
         $identity = $user->loginByPhone($phone, $code, $states);
