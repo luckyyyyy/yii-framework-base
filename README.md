@@ -128,6 +128,10 @@ brew services start redis
 brew services start php@7.1
 ```
 
+### 配置文件
+
+本地开发时，建议复制`custom-sample.php`为`custom.php`来自定义一些关键参数。
+
 ### Final
 
 You can then access the application through the following URL:
