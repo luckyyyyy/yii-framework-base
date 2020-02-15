@@ -92,7 +92,7 @@ CREATE DATABASE `yii-framework-base` DEFAULT CHARACTER SET utf8;
 然后，依次导入初始的数据库表结构、数据，这里只包含必须的少量数据内容，其它数据内容请在使用过程中填充。
 
 ~~~
-mysql -u root yii-framework-base < static/sql/data.sql
+mysql -u root yii-framework-base < static/sql/base.sql
 ~~~
 
 最后，运行 Yii2 的数据库升级工具更新库表结构。

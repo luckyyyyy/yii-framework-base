@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 -- 表的结构 `B_wxapp_wechat_formid`
 --
 
-CREATE TABLE `B_wxapp_wechat_formid` (
+CREATE TABLE `A_wxapp_wechat_formid` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `formid` varchar(64) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `B_wxapp_wechat_formid` (
 --
 -- Indexes for table `B_wxapp_wechat_formid`
 --
-ALTER TABLE `B_wxapp_wechat_formid`
+ALTER TABLE `A_wxapp_wechat_formid`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `time_create` (`time_create`);
@@ -49,6 +49,6 @@ ALTER TABLE `B_wxapp_wechat_formid`
 --
 -- 使用表AUTO_INCREMENT `B_wxapp_wechat_formid`
 --
-ALTER TABLE `B_wxapp_wechat_formid`
+ALTER TABLE `A_wxapp_wechat_formid`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
