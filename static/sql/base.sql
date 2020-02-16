@@ -241,7 +241,6 @@ CREATE TABLE `identity` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
-
 --
 -- Indexes for table `cron`
 --
@@ -256,42 +255,33 @@ CREATE TABLE `cron` (
   `extra` text CHARACTER SET utf8mb4
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Indexes for table `cron`
---
 ALTER TABLE `cron`
   ADD PRIMARY KEY (`id`),
   ADD KEY `status` (`status`),
   ADD KEY `time_exec` (`time_exec`);
 
-
---
--- AUTO_INCREMENT for table `cron`
---
 ALTER TABLE `cron`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- Indexes for table `wechat_media`
+-- Table structure for table `wechat_media`
 --
+
+CREATE TABLE `wechat_media` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `flag` int(11) NOT NULL DEFAULT '0',
+  `type` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `data` text CHARACTER SET utf8mb4,
+  `time_modify` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `summary` varchar(30) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 ALTER TABLE `wechat_media`
   ADD PRIMARY KEY (`id`),
   ADD KEY `time_modify` (`time_modify`),
   ADD KEY `type` (`type`),
   ADD KEY `summary` (`summary`);
 
---
--- Indexes for table `wechat_media`
---
-ALTER TABLE `wechat_media`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `time_modify` (`time_modify`),
-  ADD KEY `type` (`type`),
-  ADD KEY `summary` (`summary`);
-
---
--- AUTO_INCREMENT for table `wechat_media`
---
 ALTER TABLE `wechat_media`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
